@@ -1,15 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+import { createAccount } from "@/lib/actions/user.actions";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -23,6 +26,7 @@ const authFormSchema = (formType: FormType) => {
 const AuthForm = ({ type }: { type: FormType }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [accountId, setAccountId] = useState(null);
 
     const formSchema = authFormSchema(type);
     const form = useForm<z.infer<typeof formSchema>>({
@@ -37,7 +41,22 @@ const AuthForm = ({ type }: { type: FormType }) => {
         setIsLoading(true);
         setErrorMessage("");
 
-        console.log(values);
+        try {
+            const user =
+                type === "sign-up"
+                    ? await createAccount({
+                        fullName: values.fullName || "",
+                        email: values.email,
+                    })
+                    : null;
+      
+            setAccountId(user.accountId);
+            form.reset();
+        } catch {
+            setErrorMessage("Failed to create account. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
