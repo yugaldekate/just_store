@@ -7,6 +7,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import OtpModal from "./OTPModal";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
@@ -151,7 +152,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 </form>
             </Form>
 
-            {/* Todo: OTP modal */}
+            {accountId && <OtpModal email={form.getValues("email")} accountId={accountId} />}
         </>
     );
 };
