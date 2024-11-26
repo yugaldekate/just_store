@@ -4,7 +4,7 @@ import { Account, Avatars, Client, Databases, Storage } from "node-appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
 import { cookies } from "next/headers";
 
-// create session when sign-in for every user / new clien for each request
+// create session when sign-in for every user / new client for each request
 export const createSessionClient = async () => {
     const client = new Client()
         .setEndpoint(appwriteConfig.endpointUrl)
