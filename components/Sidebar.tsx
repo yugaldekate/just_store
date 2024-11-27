@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
-import { avatarPlaceHolderUrl, navItems } from '@/constants';
+import { navItems } from '@/constants';
 
 interface Props {
     fullName: string;
@@ -75,7 +75,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
 
             <div className="sidebar-user-info">
                 <Image
-                    src={avatarPlaceHolderUrl}
+                    src={avatar}
                     alt="Avatar"
                     width={44}
                     height={44}
