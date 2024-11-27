@@ -14,7 +14,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 
 import { navItems } from "@/constants";
 
-// import { signOutUser } from "@/lib/actions/user.actions";
+import { signOutUser } from "@/lib/actions/user.actions";
 
 interface Props {
     $id: string;
@@ -99,7 +99,7 @@ const MobileNavigation = ({ $id: ownerId, accountId, fullName, avatar, email }: 
                         <Button
                             type="submit"
                             className="mobile-sign-out-button"
-                            onClick={async () => {}}
+                            onClick={async () => signOutUser()}
                         >
                             <Image
                                 src="/assets/icons/logout.svg"

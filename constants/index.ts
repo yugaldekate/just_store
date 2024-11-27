@@ -26,4 +26,4 @@ export const navItems = [
     },
 ];
 
-export const avatarPlaceHolderUrl = "https://cdn-icons-png.flaticon.com/512/6596/6596121.png";
+export const avatarPlaceHolderUrl = "https://static.vecteezy.com/system/resources/thumbnails/027/951/137/small/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png";

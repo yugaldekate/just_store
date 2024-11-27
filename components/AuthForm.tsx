@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-import { createAccount } from "@/lib/actions/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -50,7 +50,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                         fullName: values.fullName || "",
                         email: values.email,
                     })
-                    : null;
+                    : await signInUser({ email: values.email });
       
             setAccountId(user.accountId);
             setEmail(values.email);
