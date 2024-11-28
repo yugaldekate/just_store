@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-import { createAccount } from "@/lib/actions/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -28,6 +28,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [accountId, setAccountId] = useState(null);
+    const [email, setEmail] = useState("");
 
     const formSchema = authFormSchema(type);
     const form = useForm<z.infer<typeof formSchema>>({
@@ -49,9 +50,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
                         fullName: values.fullName || "",
                         email: values.email,
                     })
-                    : null;
+                    : await signInUser({ email: values.email });
       
             setAccountId(user.accountId);
+            setEmail(values.email);
             form.reset();
         } catch {
             setErrorMessage("Failed to create account. Please try again.");
@@ -152,7 +154,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 </form>
             </Form>
 
-            {accountId && <OtpModal email={form.getValues("email")} accountId={accountId} />}
+            {accountId && <OtpModal email={email} accountId={accountId} />}
         </>
     );
 };
