@@ -27,3 +27,7 @@ export const navItems = [
 ];
 
 export const avatarPlaceHolderUrl = "https://static.vecteezy.com/system/resources/thumbnails/027/951/137/small/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png";
+
+export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+export type FileType = "image" | "video" | "audio" | "document" | "other";
