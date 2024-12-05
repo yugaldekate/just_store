@@ -5,6 +5,7 @@ import { getFiles } from '@/lib/actions/file.actions';
 import { getFileTypesParams } from '@/lib/utils';
 import { FileType } from '@/constants';
 import { Models } from 'node-appwrite';
+import Card from '@/components/Card';
 
 const Page = async ({ params, searchParams } : SearchParamProps) => {
 
@@ -38,7 +39,7 @@ const Page = async ({ params, searchParams } : SearchParamProps) => {
             {files.total > 0 ? (
                 <section className="file-list">
                     {files.documents.map((file: Models.Document) => (
-                        <h1 key={file.$id}>{file.name}</h1>
+                        <Card key={file.$id} file={file}/>
                     ))}
                 </section>
             ) : (

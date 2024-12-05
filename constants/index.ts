@@ -31,3 +31,31 @@ export const avatarPlaceHolderUrl = "https://static.vecteezy.com/system/resource
 export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 export type FileType = "image" | "video" | "audio" | "document" | "other";
+
+export const actionsDropdownItems = [
+    {
+        label: "Rename",
+        icon: "/assets/icons/edit.svg",
+        value: "rename",
+    },
+    {
+        label: "Details",
+        icon: "/assets/icons/info.svg",
+        value: "details",
+    },
+    {
+        label: "Share",
+        icon: "/assets/icons/share.svg",
+        value: "share",
+    },
+    {
+        label: "Download",
+        icon: "/assets/icons/download.svg",
+        value: "download",
+    },
+    {
+        label: "Delete",
+        icon: "/assets/icons/delete.svg",
+        value: "delete",
+    },
+];
