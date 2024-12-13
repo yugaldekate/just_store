@@ -91,10 +91,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
                         const { type, extension } = getFileType(file.name);
 
                         return (
-                            <li
-                                key={`${file.name}-${index}`}
-                                className="uploader-preview-item"
-                            >
+                            <li key={`${file.name}-${index}`} className="uploader-preview-item">
                                 <div className="flex items-center gap-3">
                                     <Thumbnail
                                         type={type}
